@@ -122,7 +122,7 @@ h3
 }
 
 #start{
-	font-size: 2em;
+	font-size: 1.75em;
 	padding: 10% auto;
    	color: #e8e8e8;
     background-color: #0a2961;
@@ -143,4 +143,8 @@ h3
     color: #2e3130;
     background-color: #e6e6e6;
     border-color: #485554;
+}
+
+.playAgain {
+	font-size: 1.5em;
 }
