@@ -75,6 +75,14 @@ var showQuestion;
 var indexCount = 0;
 var arrayLength = Object.keys(questions).length;
 var paintingArtist;
+
+//to deal with touch screen
+function touchOn(){
+$(document).ready(function () {
+    $('button').on('touchstart', function () { $(this).css('background-color', '#e6e6e6'); });
+    $('button').on('touchend', function () { $(this).css('background-color', '#f5f5f5'); });
+});
+};
 //start quiz from start button
 $("#start").on("click", startQuiz);
 
@@ -105,11 +113,12 @@ function displayQuestion(){
 			for(var i=0; i<paintingChoices.length; i++){
 				$("#option"+i).html(paintingChoices[i]);
 				$("#option"+i).attr("value", paintingChoices[i]);
-			};
 
+			};
+		touchOn();
 		timer();
 		$(".choices").on("click", checkAnswer);
-
+		
 }; //end displayQuestion loop
 
 
@@ -135,7 +144,9 @@ function stopTime() {
 
 function checkAnswer(){
 	$(".choices").off("click");
-	var guess = this.attributes[2].value;
+
+
+	var guess = this.attributes[4].value;
 	//var paintingArtist = questions[paintingNumber]["artist"];
 	console.log(guess);
 

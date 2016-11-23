@@ -34,7 +34,7 @@ body {
 	min-height: 605px;
 }
 #quizContainer {
-	min-height: 232px;
+	min-height: 255px;
 }
 
 #quizTitle{
@@ -105,12 +105,11 @@ h3
 	padding: 5px;
 	font-size: 1.5em;
 	font-weight: bold;
-	outline: solid black 1px;
-
-
-
+	color: #2e3130;
+	background-color: #f5f5f5;
+	border-color: #485554;
+	opacity: 1;
 }
-
 
 #scoreboard{
 	text-align: center;
@@ -131,15 +130,17 @@ h3
     font-family: 'Fredericka the Great', cursive;
 }
 
-#start:hover,
-.choices:hover {
+#start:hover
+{
 	opacity: 0.75;
-	 background-color: #0a2961;
+	background-color: #0a2961;
 }
-.choices:hover {
-   	color: #e8e8e8;
-   	}
-
 .finalPercent {
 	font-size: 2em;
+}
+
+.btn-default:hover {
+    color: #2e3130;
+    background-color: #e6e6e6;
+    border-color: #485554;
 }
