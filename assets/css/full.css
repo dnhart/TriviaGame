@@ -17,7 +17,7 @@ body {
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
 .full {
-    background: url('http://placehold.it/1920x1080') no-repeat center center fixed;
+    background: url('../images/fineart.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -32,6 +32,7 @@ body {
 #quizActive{
 	height: 100%;
 	display: none;
+	overflow: auto;
 }
 
 
@@ -48,9 +49,12 @@ body {
 }
 
 
-
-
 #scoreboard{
+	text-align: center;
+	display: none;
+}
+
+#summaryActive{
 	text-align: center;
 	display: none;
 }
