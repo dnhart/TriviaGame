@@ -5,28 +5,92 @@
  */
 
 body {
-    margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    font-family: 'Fredericka the Great', cursive;
     height: 100%;
+    width: 90%;
+    margin: auto;
+	background-color: transparent;
+	margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
+
 
 .container {
 	height: 100%;
 	background-color: transparent;
+	width: 85%
 }
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
 .full {
-    background: url('../images/fineart.jpg') no-repeat center center fixed;
+    background: url('../images/abstract.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
 }
 
+#quizActive{
+	min-height: 605px;
+}
+#quizContainer {
+	min-height: 232px;
+}
+
+#quizTitle{
+	background-color: #6e2108;
+	color: #e8e8e8;
+	border-color: #485554;
+}
+#quizTitle > .panel-title{
+	font-size: 2em;
+	text-align: center;
+font-family: 'Fredericka the Great', cursive;
+
+}
+
+.panel-default {
+    border-color:transparent;
+}
+
+#paintingContainer,
+#paintingTitle,
+#quizHeading,
+#summaryTitle,
+#summaryContainer
+ {
+	font-size: 1.25em;
+	color: #2e3130;
+	font-weight: bold;
+}
+
+h2
+{
+	font-size: 1.75em;
+}
+
+
+h3
+ {
+	color: #2e3130;
+	font-weight: bold;
+}
+
+
+
+
+#timerBox{
+	background-color: transparent;
+	color: white;
+    font-size: 3em;
+    text-align: center;
+}
+
 #splashPage{
 	height: 100%;
 	display: block;
+	background-color: transparent;
+
 }
 
 #quizActive{
@@ -42,10 +106,9 @@ body {
 	font-size: 1.5em;
 	font-weight: bold;
 	outline: solid black 1px;
-}
 
-.choices:hover{
-	background-color: #9eb6d2;
+
+
 }
 
 
@@ -57,4 +120,26 @@ body {
 #summaryActive{
 	text-align: center;
 	display: none;
+}
+
+#start{
+	font-size: 2em;
+	padding: 10% auto;
+   	color: #e8e8e8;
+    background-color: #0a2961;
+    border-color:#485554;
+    font-family: 'Fredericka the Great', cursive;
+}
+
+#start:hover,
+.choices:hover {
+	opacity: 0.75;
+	 background-color: #0a2961;
+}
+.choices:hover {
+   	color: #e8e8e8;
+   	}
+
+.finalPercent {
+	font-size: 2em;
 }

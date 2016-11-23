@@ -79,9 +79,10 @@ var paintingArtist;
 $("#start").on("click", startQuiz);
 
 function startQuiz(){
-	$("#timerBox").html("<div class='row'><div class='col-xs-12' id='display'>10</div></div>");
+	$("#display").html("10");
 	$("#quizActive").toggle();
 	$("#scoreboard").toggle();
+
 	displayQuestion();
 	
 };
@@ -139,16 +140,16 @@ function checkAnswer(){
 	console.log(guess);
 
 	if (guess === paintingArtist){
-			$("#paintingContainer").html("<img class='img-responsive' alt='Correct answer' src='assets/images/correct.jpg' />");
-    		$("#display").html("");
+			$("#paintingContainer").html("<h3>Correct!</h3><p> The artist is "+paintingArtist+"</p>");
+    		$("#display").html("0");
     		correct++;
-    		$("#correctTotal").html(correct);
+    		$("#correctTotal").html("<h3>"+correct+"</h3>");
     		stopTime();
     	} else {
-    		$("#paintingContainer").html("<img class='img-responsive' alt='Correct answer' src='assets/images/wrong.jpeg' />");
-    		$("#display").html("");
+    		$("#paintingContainer").html("<h3>Nope!</h3><p>The correct artist is "+paintingArtist+"</p>");
+    	$("#display").html("0");
     		incorrect++;
-    		$("#incorrectTotal").html(incorrect);
+    		$("#incorrectTotal").html("<h3>"+incorrect+"</h3>");
     		stopTime();
     };
 };//end checkanswer
@@ -156,7 +157,7 @@ function checkAnswer(){
 
 
 function timer(){
-	var time= 10;
+	var time= 11;
 	counter = setInterval(countdown, 1000);
 	//$(".choices").on("click", checkAnswer);
 	function countdown() {
@@ -167,10 +168,10 @@ function timer(){
     	$("#display").html(time);
     	} else {
     		$(".choices").off("click");
-			$("#paintingContainer").html("<img class='img-responsive' alt='Time is up' src='assets/images/timesup.jpg' />");
-    		$("#display").html("");
+		$("#paintingContainer").html("<h3>Time's Up!</h3><p>The correct artist is "+paintingArtist+"</p>");;
+    		$("#display").html("0");
     		incorrect++;
-    		$("#incorrectTotal").html(incorrect);
+    		$("#incorrectTotal").html("<h3>"+incorrect+"</h3>");
     		stopTime();
     	};   
 	}; //end countdown
@@ -179,7 +180,7 @@ function timer(){
 
 
 function summaryPage(){
-	$("#timerBox").html("<button id='start'>Play Again!</button>");
+	$("#timerBox").html("<button btn btn-primary btn-block id='start' class='playAgain'>Play Again!</button>");
 	$("#start").on("click", restartQuiz);
 	$("#quizActive").toggle();
 	$("#scoreboard").toggle();
@@ -199,7 +200,7 @@ function summaryPage(){
 		$("#summaryTitle").html("Don't quit your day job...");
 	}; 
 
-	$("#summaryContainer").html("<div class='fullwidth'>You got a....</div><div class='finalpercent'>"+percentRight+"%</div><div class='fullwidth'><p>Correct answers: "+correct+"</p><p>Incorrect answers: "+incorrect+"</p></div>");
+	$("#summaryContainer").html("<div class='fullwidth'>You got a....</div><div class='finalPercent'>"+percentRight+"%</div><div class='fullwidth'><p>Correct answers: "+correct+"</p><p>Incorrect answers: "+incorrect+"</p></div>");
 
 
 };
@@ -216,9 +217,10 @@ indexCount = 0;
 	$("#quizActive").toggle();
 	$("#scoreboard").toggle();
 	$("#summaryActive").toggle();
-	$("#incorrectTotal").html(incorrect);
-	$("#correctTotal").html(correct);
 
+
+	$("#incorrectTotal").html("<h3>"+incorrect+"</h3>");
+	$("#correctTotal").html("<h3>"+correct+"</h3>");
 //start displayQuestion
 	displayQuestion();
 	
