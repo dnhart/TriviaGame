@@ -62,6 +62,7 @@ font-family: 'Fredericka the Great', cursive;
 	font-size: 1.25em;
 	color: #2e3130;
 	font-weight: bold;
+	text-align: center;
 }
 
 h2
@@ -123,7 +124,6 @@ h3
 
 #start{
 	font-size: 1.75em;
-	padding: 10% auto;
    	color: #e8e8e8;
     background-color: #0a2961;
     border-color:#485554;
@@ -147,4 +147,14 @@ h3
 
 .playAgain {
 	font-size: 1.5em;
+}
+
+@media only screen and (max-width: 768px)  {
+
+
+#start,
+.playAgain{
+	font-size: 1em;
+	padding: auto;
+}
 }

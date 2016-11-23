@@ -191,7 +191,7 @@ function timer(){
 
 
 function summaryPage(){
-	$("#display").html("<button btn btn-primary btn-block id='start' class='playAgain'>Play Again!</button>");
+	$("#display").html("<button btn-lg btn-primary btn-block id='start' class='playAgain'>Play Again!</button>");
 	$("#start").on("click", restartQuiz);
 	$("#quizActive").toggle();
 	$("#scoreboard").toggle();
