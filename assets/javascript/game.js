@@ -74,6 +74,7 @@ var questions = {
 var showQuestion;
 var indexCount = 0;
 var arrayLength = Object.keys(questions).length;
+var paintingArtist;
 //start quiz from start button
 $("#start").on("click", startQuiz);
 
@@ -93,7 +94,7 @@ function displayQuestion(){
 		var paintingTitle = questions[paintingNumber]["title"];
 		var paintingLocation = "<img class='img-responsive' alt='"+paintingTitle+"'" +questions[paintingNumber]["painting"]+" />";
 		var paintingChoices = questions[paintingNumber]["choices"];
-		var paintingArtist = questions[paintingNumber]["artist"];
+		paintingArtist = questions[paintingNumber]["artist"];
 		console.log(paintingNumber, paintingTitle, paintingLocation, paintingChoices, paintingArtist);
 
 	
@@ -106,6 +107,7 @@ function displayQuestion(){
 			};
 
 		timer();
+		$(".choices").on("click", checkAnswer);
 
 }; //end displayQuestion loop
 
@@ -126,21 +128,37 @@ function stopTime() {
 
     	time=11;
     	clearInterval(counter);
-    	//setTimeout(nextQuestion, 3000);
+    	setTimeout(nextQuestion, 3000);
 
 };
 
 function checkAnswer(){
+	$(".choices").off("click");
 	var guess = this.attributes[2].value;
+	//var paintingArtist = questions[paintingNumber]["artist"];
 	console.log(guess);
-	stopTime();
-}
+
+	if (guess === paintingArtist){
+			$("#paintingContainer").html("<img class='img-responsive' alt='Correct answer' src='assets/images/correct.jpg' />");
+    		$("#display").html("");
+    		correct++;
+    		$("#correctTotal").html(correct);
+    		stopTime();
+    	} else {
+    		$("#paintingContainer").html("<img class='img-responsive' alt='Correct answer' src='assets/images/wrong.jpeg' />");
+    		$("#display").html("");
+    		incorrect++;
+    		$("#incorrectTotal").html(incorrect);
+    		stopTime();
+    };
+};//end checkanswer
+
 
 
 function timer(){
 	var time= 10;
 	counter = setInterval(countdown, 1000);
-	$(".choices").on("click", checkAnswer);
+	//$(".choices").on("click", checkAnswer);
 	function countdown() {
 		if (time>11){
 			time--;
@@ -148,8 +166,11 @@ function timer(){
     	time--;
     	$("#display").html(time);
     	} else {
+    		$(".choices").off("click");
 			$("#paintingContainer").html("<img class='img-responsive' alt='Time is up' src='assets/images/timesup.jpg' />");
     		$("#display").html("");
+    		incorrect++;
+    		$("#incorrectTotal").html(incorrect);
     		stopTime();
     	};   
 	}; //end countdown
