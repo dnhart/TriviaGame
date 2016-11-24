@@ -12,8 +12,8 @@ var questions = {
 	painting2: {
 		title: "No. 5, 1948",
 		painting: "src='assets/images/number-5.jpg'",
-		choices: ["Jackson Polluck","Pablo Picasso","Peter Paul Rubens","Grant Wood"],
-		artist: "Jackson Polluck"
+		choices: ["Jackson Pollock","Pablo Picasso","Peter Paul Rubens","Grant Wood"],
+		artist: "Jackson Pollock"
 	},
 	painting3:{
 		title: "The Son of Man",
@@ -65,7 +65,7 @@ var questions = {
 	}
 };
 //var artists is for if I wanted to dynamically created the choices.
-//var artists ={"C.M. Coolidge", "Jackson Polluck", "Rene Magrittees", "Georges Suerat", "Grant Wood", "Salvador Dali", "Vincent Van Gogh", "Johannes Vermeer", "Rembrandt", "Raphael", "Sandro Botticelli", "Mark Rothko", "Peter Paul Rubens", "Henry Matisse", "Diego Rivera", "James McNeill Whistler", "Pablo Picasso", "Wassily Kandinsky", "Gustav Klimt", "Renoir", "Edouard Manet", "Francisco Goya", "Diego Velazquez", "Jan van Eyck", "Edvard Munch", "Claude Monet", "Michelangelo", "Caravaggio", "Leonardo da Vinci", "Edgar Degas"};
+//var artists ={"C.M. Coolidge", "Jackson Pollock", "Rene Magrittees", "Georges Suerat", "Grant Wood", "Salvador Dali", "Vincent Van Gogh", "Johannes Vermeer", "Rembrandt", "Raphael", "Sandro Botticelli", "Mark Rothko", "Peter Paul Rubens", "Henry Matisse", "Diego Rivera", "James McNeill Whistler", "Pablo Picasso", "Wassily Kandinsky", "Gustav Klimt", "Renoir", "Edouard Manet", "Francisco Goya", "Diego Velazquez", "Jan van Eyck", "Edvard Munch", "Claude Monet", "Michelangelo", "Caravaggio", "Leonardo da Vinci", "Edgar Degas"};
 
 
 //starter variables
@@ -95,6 +95,8 @@ function startQuiz(){
 	
 };
 
+//gets the data from the questions objuect using the indexCount and populates the html. Starts timer and turns on click to check answer
+
 function displayQuestion(){
 
 		var paintingContainer=$("#paintingContainer");
@@ -115,14 +117,16 @@ function displayQuestion(){
 				$("#option"+i).attr("value", paintingChoices[i]);
 
 			};
+	//starts function to deal with touch screens		
 		touchOn();
+	//starts timer
 		timer();
 		$(".choices").on("click", checkAnswer);
 		
 }; //end displayQuestion loop
 
 
-
+//function to move to the next question or to run function to display the summary page
 function nextQuestion(){
 	indexCount++;
 	
@@ -133,7 +137,7 @@ function nextQuestion(){
   	};
 };
 
-
+//resets time, removes interval to stop the counter, sets the next question to run in 3 seconds
 function stopTime() {
 
     	time=11;
@@ -142,7 +146,10 @@ function stopTime() {
 
 };
 
+//onClick checks the answer from the button and compares it to the correct answer
 function checkAnswer(){
+
+	//turns off click so you can't answer more than once
 	$(".choices").off("click");
 
 
@@ -166,7 +173,7 @@ function checkAnswer(){
 };//end checkanswer
 
 
-
+//timer function and also updates timer in html. time is set to 11 so you have a moment to allow the painting to load if you have a slower connection. Timer won't display until it is on 10.
 function timer(){
 	var time= 11;
 	counter = setInterval(countdown, 1000);
@@ -189,7 +196,7 @@ function timer(){
 
 };//end timer
 
-
+//creates the summary page, calculates the percent correct. displays the play again button
 function summaryPage(){
 	$("#display").html("<button btn-lg btn-primary btn-block id='start' class='playAgain'>Play Again!</button>");
 	$("#start").on("click", restartQuiz);
@@ -216,6 +223,7 @@ function summaryPage(){
 
 };
 
+//function to reset the global variables, restart the quiz
 function restartQuiz(){
 //reset starter variables
 correct = 0;
